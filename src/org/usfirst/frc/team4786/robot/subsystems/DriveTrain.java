@@ -8,10 +8,18 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
+import org.usfirst.frc.team4786.robot.OI;
 import org.usfirst.frc.team4786.robot.Robot;
+import org.usfirst.frc.team4786.robot.commands.Autonomous;
+import org.usfirst.frc.team4786.robot.commands.Pickup;
+import org.usfirst.frc.team4786.robot.commands.Place;
+import org.usfirst.frc.team4786.robot.commands.PrepareToPickup;
 import org.usfirst.frc.team4786.robot.commands.TankDriveWithJoystick;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -95,10 +103,14 @@ public class DriveTrain extends Subsystem {
 	}
 
 	/**
-	 * @param joy The ps3 style joystick to use to drive tank style.
+	 * @param joy The Logitech F310 style analog joysticks to use to drive tank style.
 	 */
 	public void drive(Joystick joy) {
-		drive(-joy.getY(), -joy.getAxis(AxisType.kThrottle));
+
+		double left = -joy.getRawAxis(1);  // left y-axis (limits -1 to 1)
+		double right = -joy.getRawAxis(4); // right y-axis (limits -1 to 1)
+		
+		drive(left, right);
 	}
 
 	/**

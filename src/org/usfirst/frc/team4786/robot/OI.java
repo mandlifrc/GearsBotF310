@@ -29,25 +29,28 @@ public class OI {
         SmartDashboard.putData("Deliver Soda", new Autonomous());
         
         // Create some buttons
-        JoystickButton d_up = new JoystickButton(joy, 5);
-        JoystickButton d_right= new JoystickButton(joy, 6);
-        JoystickButton d_down= new JoystickButton(joy, 7);
-        JoystickButton d_left = new JoystickButton(joy, 8);
-        JoystickButton l2 = new JoystickButton(joy, 9);
-        JoystickButton r2 = new JoystickButton(joy, 10);
-        JoystickButton l1 = new JoystickButton(joy, 11);
-        JoystickButton r1 = new JoystickButton(joy, 12);
+        JoystickButton y_btn = new JoystickButton(joy, 4);
+        JoystickButton b_btn= new JoystickButton(joy, 2);
+        JoystickButton a_btn= new JoystickButton(joy, 1);
+        JoystickButton x_btn = new JoystickButton(joy, 3);
+        
+        JoystickButton left_ana_btn = new JoystickButton(joy, 9);
+        JoystickButton right_ana_btn = new JoystickButton(joy, 10);
+        
+        JoystickButton lb_btn = new JoystickButton(joy, 5);
+        JoystickButton rb_btn = new JoystickButton(joy, 6);
 
         // Connect the buttons to commands
-        d_up.whenPressed(new SetElevatorSetpoint(0.2));
-        d_down.whenPressed(new SetElevatorSetpoint(-0.2));
-        d_right.whenPressed(new CloseClaw());
-        d_left.whenPressed(new OpenClaw());
+        y_btn.whenPressed(new SetElevatorSetpoint(0.2));
+        a_btn.whenPressed(new SetElevatorSetpoint(-0.2));
+        b_btn.whenPressed(new CloseClaw());
+        x_btn.whenPressed(new OpenClaw());
         
-        r1.whenPressed(new PrepareToPickup());
-        r2.whenPressed(new Pickup());
-        l1.whenPressed(new Place());
-        l2.whenPressed(new Autonomous());
+        lb_btn.whenPressed(new Place());
+        rb_btn.whenPressed(new PrepareToPickup());
+        
+        left_ana_btn.whenPressed(new Autonomous());
+        right_ana_btn.whenPressed(new Pickup());
     }
     
     public Joystick getJoystick() {
